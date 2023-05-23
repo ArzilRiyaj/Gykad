@@ -20,7 +20,11 @@
     <link rel="stylesheet" type="text/css" href="..\..\files\assets\icon\feather\css\feather.css">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\style.css">
+    <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\additional_css.css">
     <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\jquery.mCustomScrollbar.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="..\..\files\assets\icon\font-awesome\css\font-awesome.min.css">
 </head>
 
 <body>
@@ -86,11 +90,9 @@
                             <li class="header-search">
                                 <div class="main-search morphsearch-search">
                                     <div class="input-group">
-                                        <span class="input-group-addon search-close"><i
-                                                class="feather icon-x"></i></span>
+                                        <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
                                         <input type="text" class="form-control">
-                                        <span class="input-group-addon search-btn"><i
-                                                class="feather icon-search"></i></span>
+                                        <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
                                     </div>
                                 </div>
                             </li>
@@ -311,28 +313,59 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu active pcoded-trigger">
-                                    <a href="javascript:void(0)">
+                                <li class="">
+                                    <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
+                                        <span class="pcoded-mtext">Members</span>
+                                    </a>
                                     <ul class="pcoded-submenu">
                                         <li class="active">
-                                            <a href="index-1.htm">
-                                                <span class="pcoded-mtext">Default</span>
+                                            <a href="../members/manage_member.php ">
+                                                <span class="pcoded-mtext">Manage Members</span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="dashboard-crm.htm">
-                                                <span class="pcoded-mtext">CRM</span>
+                                            <a href="../members/add_member.php">
+                                                <span class="pcoded-mtext "> Add Member</span>
                                             </a>
                                         </li>
-                                        <li class=" ">
-                                            <a href="dashboard-analytics.htm">
-                                                <span class="pcoded-mtext">Analytics</span>
-                                                <span class="pcoded-badge label label-info ">NEW</span>
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+
+                            <!-- TRAINERS -->
+
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
+                                        <span class="pcoded-mtext">Trainers</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="active">
+                                            <a href="../Trainers/manage_trainers.php ">
+                                                <span class="pcoded-mtext">Manage Trainers</span>
                                             </a>
                                         </li>
+                                        <li class="">
+                                            <a href="../Trainers/add_trainers.php">
+                                                <span class="pcoded-mtext "> Add Trainer</span>
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </li>
 
@@ -351,3 +384,5 @@
                             </ul>
                         </div>
                     </nav>
+
+                    <body>

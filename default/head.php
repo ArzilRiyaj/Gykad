@@ -23,8 +23,25 @@
     <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\additional_css.css">
     <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\jquery.mCustomScrollbar.css">
 
+    <!-- sweet alert -->
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="..\..\files\assets\icon\font-awesome\css\font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  <!-- Data Table Css -->
+  <link rel="stylesheet" type="text/css" href="..\..\files\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="..\..\files\assets\pages\data-table\css\buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="..\..\files\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="..\..\files\assets\pages\data-table\extensions\buttons\css\buttons.dataTables.min.css">
+
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\style.css">
+    <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\jquery.mCustomScrollbar.css">
+
 </head>
 
 <body>
@@ -176,16 +193,7 @@
                                                 <i class="feather icon-user"></i> Profile
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="email-inbox.htm">
-                                                <i class="feather icon-mail"></i> My Messages
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="auth-lock-screen.htm">
-                                                <i class="feather icon-lock"></i> Lock Screen
-                                            </a>
-                                        </li>
+                                
                                         <li>
                                             <a href="auth-normal-sign-in.htm">
                                                 <i class="feather icon-log-out"></i> Logout
@@ -312,18 +320,20 @@
                     <nav class="pcoded-navbar">
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="pcoded-navigatio-lavel">Navigation</div>
+                            <!--  Dashboard -->
+
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
-                                    <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
+                                    <a href="../dashboard/index-1.php">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
                                 </li>
 
                             </ul>
-
+                            <!-- Members -->
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                <li class="pcoded-hasmenu ">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="fa fa-users"></i></span>
                                         <span class="pcoded-mtext">Members</span>
@@ -349,13 +359,13 @@
                             <!-- TRAINERS -->
 
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                <li class="pcoded-hasmenu ">
                                     <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
+                                        <span class="pcoded-micon"><i class="fa fa-user"></i></span>
                                         <span class="pcoded-mtext">Trainers</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="active">
+                                        <li class="">
                                             <a href="../Trainers/manage_trainers.php ">
                                                 <span class="pcoded-mtext">Manage Trainers</span>
                                             </a>
@@ -369,6 +379,89 @@
                                     </ul>
                                 </li>
 
+
+                            </ul>
+                            <!-- Attendance -->
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fas fa-clipboard-user"></i></span>
+                                        <span class="pcoded-mtext">Attendance</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="../Attendence/manage_attendence.php ">
+                                                <span class="pcoded-mtext">Manage Attendance</span>
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+
+                            <!-- Workouts -->
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fa-solid fa-dumbbell"></i></span>
+                                        <span class="pcoded-mtext">Workouts</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="../Workouts/manage_workout.php ">
+                                                <span class="pcoded-mtext">Manage Workouts</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="../Workouts/add_workout.php ">
+                                                <span class="pcoded-mtext">Add Workouts</span>
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+
+
+                            <!-- Payment -->
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fa fa-money"></i></span>
+                                        <span class="pcoded-mtext">Payment</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="../Workouts/manage_workout.php ">
+                                                <span class="pcoded-mtext">Manage Workouts</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="../Workouts/add_workout.php ">
+                                                <span class="pcoded-mtext">Add Workouts</span>
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="">
+                                    <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
+                                        <span class="pcoded-micon"><i class="fa fa-file-text"></i></i></span>
+                                        <span class="pcoded-mtext">Reports</span>
+                                    </a>
+                                </li>
 
                             </ul>
 

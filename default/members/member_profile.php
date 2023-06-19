@@ -28,14 +28,7 @@ include_once "../head.php";
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <div class="page-header-breadcrumb">
-                                    <ul class="breadcrumb-title">
-                                        <li class="breadcrumb-item">
-                                            <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
-                                        </li>
-                                        <li class="breadcrumb-item"><a href="#!">Widget</a> </li>
-                                    </ul>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
@@ -72,10 +65,10 @@ include_once "../head.php";
                                                 <div class="col-md-4">
 
                                                     <div class="card-body">
-                                                        <p class="card-text"><strong>NIC No:</strong> 1234567890</p>
-                                                        <p class="card-text"><strong>Membership:</strong> Standard</p>
-                                                        <p class="card-text"><strong>Personal Trainer:</strong> Yes</p>
-                                                        <p class="card-text"><strong>Date of Birth:</strong> January 1, 1990</p>
+                                                        <p class="card-text"><strong>NIC No:</strong> 905468761V</p>
+                                                        <p class="card-text"><strong>Membership:</strong> Gold</p>
+                                                        <p class="card-text"><strong>Personal Trainer:</strong> Shehan</p>
+                                                        <p class="card-text"><strong>Date of Birth:</strong> 1-03-1990</p>
                                                     </div>
 
                                                 </div>
@@ -83,8 +76,8 @@ include_once "../head.php";
 
                                                     <div class="card-body">
                                                         <p class="card-text"><strong>Phone No:</strong> 123-456-7890</p>
-                                                        <p class="card-text"><strong>Email:</strong> johndoe@example.com</p>
-                                                        <p class="card-text"><strong>Address:</strong> 123 Main St, City, State</p>
+                                                        <p class="card-text"><strong>Email:</strong> johndoe@gmail.com</p>
+                                                        <p class="card-text"><strong>Address:</strong> 123 Main St, matale</p>
 
                                                     </div>
                                                 </div>

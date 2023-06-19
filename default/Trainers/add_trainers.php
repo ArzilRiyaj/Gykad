@@ -20,20 +20,20 @@ include_once "../head.php";
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
                                         <div class="d-inline">
-                                            <h4>Add New Trainer</h4>
-                                            
+                                            <!-- <h4>Add New Trainer</h4> -->
+                                            <h4>Edit Trainer</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="page-header-breadcrumb">
+                                    <!-- <div class="page-header-breadcrumb">
                                         <ul class="breadcrumb-title">
                                             <li class="breadcrumb-item">
                                                 <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
                                             </li>
                                             <li class="breadcrumb-item"><a href="#!">Widget</a> </li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -44,12 +44,12 @@ include_once "../head.php";
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-header">
-                                           
+
                                             <div class="card-header-right">
                                                 <ul class="list-unstyled card-option">
                                                     <li><i class="feather icon-maximize full-card"></i></li>
                                                     <li><i class="feather icon-minus minimize-card"></i></li>
-                                                  
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@ include_once "../head.php";
 
                                                             <div class="form-group col-md-6">
                                                                 <label for="firstName">First Name:</label>
-                                                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+                                                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="lastName">Last Name:</label>
@@ -76,7 +76,7 @@ include_once "../head.php";
 
                                                         <div class="form-group">
                                                             <label for="photo">Photo</label>
-                                                            <input type="file" class="form-control-file" id="photo" name="photo">
+                                                            <input type="file" class="form-control-file" id="trainer_photo" name="trainer_photo">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -90,9 +90,9 @@ include_once "../head.php";
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="email">Email</label>
-                                                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                                                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                                         </div>
-                                                        
+
                                                         <div class="form-group">
                                                             <label for="password">Password</label>
                                                             <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">

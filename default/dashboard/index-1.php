@@ -12,16 +12,16 @@ include_once "../head.php";
                 <div class="page-body">
                     <div class="row">
                         <!-- task, page, download counter  start -->
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-c-yellow update-card">
+                        <div class="col-xl-4 col-md-6">
+                        <div class="card bg-c-green update-card">
                                 <div class="card-block">
                                     <div class="row align-items-end">
                                         <div class="col-8">
-                                            <h2 class="text-white">124</h2>
+                                            <h3 class="text-white">124</h3>
                                             <h6 class="text-white m-b-0">Active Members</h6>
                                         </div>
                                         <div class="col-4 text-left">
-                                            <i class="fa fa-users fa-4x "></i>
+                                            <i class="fa fa-users fa-3x "></i>
                                         </div>
                                     </div>
                                 </div>
@@ -30,43 +30,41 @@ include_once "../head.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="card bg-c-green update-card">
                                 <div class="card-block">
                                     <div class="row align-items-end">
                                         <div class="col-8">
-                                            <h4 class="text-white">45</h4>
+                                            <h3 class="text-white">45</h3>
                                             <h6 class="text-white m-b-0">Members In Gym Now</h6>
                                         </div>
                                         <div class="col-4 text-right">
-                                            <i class="fa fa-users fa-4x "></i>
+                                            <i class="fa fa-users fa-3x "></i>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
-                                </div>
+                                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : <span id="currentTime1"></span></p>                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-c-pink update-card">
+                        <div class="col-xl-4 col-md-6">
+                        <div class="card bg-c-green update-card">
                                 <div class="card-block">
                                     <div class="row align-items-end">
                                         <div class="col-8">
-                                            <h4 class="text-white">145</h4>
-                                            <h6 class="text-white m-b-0">Task Completed</h6>
+                                            <h3 class="text-white">4</h3>
+                                            <h6 class="text-white m-b-0">Trainers In Gym Now</h6>
                                         </div>
                                         <div class="col-4 text-right">
-                                            <canvas id="update-chart-3" height="50"></canvas>
+                                        <i class="fa fa-user fa-3x"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
-                                </div>
+                                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : <span id="currentTime2"></span></p>                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <!-- <div class="col-xl-3 col-md-6">
                             <div class="card bg-c-lite-green update-card">
                                 <div class="card-block">
                                     <div class="row align-items-end">
@@ -83,22 +81,43 @@ include_once "../head.php";
                                     <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- task, page, download counter  end -->
 
                         <!--  sale analytics start -->
-                        <div class="col-xl-9 col-md-12">
+                        <div class="col-xl-6 col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Sales Analytics</h5>
-                                    <span class="text-muted">For more details about usage, please
-                                        refer <a href="https://www.amcharts.com/online-store/" target="_blank">amCharts</a> licences.</span>
+                                    <h5>Members In Gym</h5>
+                                  
                                     <div class="card-header-right">
                                         <ul class="list-unstyled card-option">
                                             <li><i class="feather icon-maximize full-card"></i></li>
                                             <li><i class="feather icon-minus minimize-card"></i>
                                             </li>
-                                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div id="sales-analytics" style="height: 265px;">
+                                
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Trainers In Gym</h5>
+                                    
+                                    <div class="card-header-right">
+                                        <ul class="list-unstyled card-option">
+                                            <li><i class="feather icon-maximize full-card"></i></li>
+                                            <li><i class="feather icon-minus minimize-card"></i>
+                                            </li>
+                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -580,7 +599,14 @@ include_once "../foot.php"
         // Set the current time in the h1 tag
         var h1Tag = document.getElementById('currentTime');
         h1Tag.textContent = currentTime;
+   
+        var h1Tag1 = document.getElementById('currentTime1');
+        h1Tag1.textContent = currentTime;
+
+        var h1Tag2 = document.getElementById('currentTime2');
+        h1Tag2.textContent = currentTime;
     }
+
 
     // Call the function to set the current time initially
     setCurrentTime();

@@ -26,14 +26,7 @@ include_once "../head.php";
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="page-header-breadcrumb">
-                                        <ul class="breadcrumb-title">
-                                            <li class="breadcrumb-item">
-                                                <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
-                                            </li>
-                                            <li class="breadcrumb-item"><a href="#!">Widget</a> </li>
-                                        </ul>
-                                    </div>
+                               
                                 </div>
                             </div>
                         </div>
@@ -127,15 +120,15 @@ include_once "../head.php";
       <tr>
         <td>1</td>
         <td>John Doe</td>
-        <td><input type="text" class="form-control" id="checkInTime1" name="checkInTime1"></td>
-        <td><input type="text" class="form-control" id="checkOutTime1" name="checkOutTime1"></td>
+        <td><input type="time" class="form-control" id="checkInTime1" name="checkInTime1"></td>
+        <td><input type="time" class="form-control" id="checkOutTime1" name="checkOutTime1"></td>
         <td><button class="btn btn-primary" onclick="checkOut(1)">Check Out</button></td>
       </tr>
       <tr>
         <td>2</td>
         <td>Jane Smith</td>
         <td><input type="time" class="form-control" id="checkInTime2" name="checkInTime2"></td>
-        <td><input type="text" class="form-control" id="checkOutTime2" name="checkOutTime2"></td>
+        <td><input type="time" class="form-control" id="checkOutTime2" name="checkOutTime2"></td>
         <td><button class="btn btn-primary" onclick="checkOut(2)">Check Out</button></td>
       </tr>
       <!-- Add more rows as needed -->

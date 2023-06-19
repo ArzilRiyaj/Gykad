@@ -16,20 +16,13 @@ include_once "../head.php";
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
                                         <div class="d-inline">
-                                            <h4>Sample Page</h4>
+                                            <h4>Add New Workout</h4>
 
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="page-header-breadcrumb">
-                                        <ul class="breadcrumb-title">
-                                            <li class="breadcrumb-item">
-                                                <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
-                                            </li>
-                                            <li class="breadcrumb-item"><a href="#!">Widget</a> </li>
-                                        </ul>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -40,7 +33,7 @@ include_once "../head.php";
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Hello Card</h5>
+
 
                                             <div class="card-header-right">
                                                 <ul class="list-unstyled card-option">
@@ -51,15 +44,45 @@ include_once "../head.php";
                                             </div>
                                         </div>
                                         <div class="card-block">
-                                            <p>
-                                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                sunt in culpa qui officia deserunt mollit anim id est laborum."
-                                            </p>
+                                            <div class="container">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="workoutName">Workout Name</label>
+                                                        <input type="text" class="form-control" id="workoutName" name="workoutName" placeholder="Enter workout name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="category">Category</label>
+                                                        <select class="form-control" id="category" name="category">
+                                                            <option value="">Select category</option>
+                                                            <option value="Cardio">Cardio</option>
+                                                            <option value="Strength">Strength</option>
+                                                            <option value="Yoga">Yoga</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="targetMuscleGroup">Target Muscle Group</label>
+                                                        <select class="form-control" id="targetMuscleGroup" name="targetMuscleGroup">
+                                                            <option value="">Select target muscle group</option>
+                                                            <option value="Chest">Chest</option>
+                                                            <option value="Back">Back</option>
+                                                            <option value="Legs">Legs</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="image">Image</label>
+                                                        <input type="file" class="form-control-file" id="image" name="image">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="videoUrl">Video URL</label>
+                                                        <input type="text" class="form-control" id="videoUrl" name="videoUrl" placeholder="Enter video URL">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                                </form>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

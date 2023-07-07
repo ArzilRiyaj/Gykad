@@ -1,5 +1,11 @@
 <?php
 include_once "../head.php";
+include_once "workout.php";
+
+$w = new workout();
+
+$data=$w->get_all_workout();
+
 ?>
 
 
@@ -17,19 +23,12 @@ include_once "../head.php";
                                     <div class="col-lg-8">
                                         <div class="page-header-title">
                                             <div class="d-inline">
-                                                <h4>Sample Page</h4>
-                                                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                                <h4>Manage Workouts</h4>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="page-header-breadcrumb">
-                                            <ul class="breadcrumb-title">
-                                                <li class="breadcrumb-item">
-                                                    <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a href="#!">Widget</a> </li>
-                                            </ul>
+                                      
                                         </div>
                                     </div>
                                 </div>
@@ -41,8 +40,7 @@ include_once "../head.php";
                                     <div class="col-sm-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Hello Card</h5>
-                                                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                                <h5>Workout List</h5>
                                                 <div class="card-header-right">
                                                     <ul class="list-unstyled card-option">
                                                         <li><i class="feather icon-maximize full-card"></i></li>
@@ -52,16 +50,34 @@ include_once "../head.php";
                                                 </div>
                                             </div>
                                             <div class="card-block">
-                                                <p>
-                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                    sunt in culpa qui officia deserunt mollit anim id est laborum."
-                                                </p>
-                                            </div>
+                                            <?php
+echo "
+                                            <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Workout Name</th>
+            <th>Category</th>
+            <th>Target Muscle Group</th>
+          </tr>
+        </thead>
+        <tbody>";
+        foreach($data as $item){
+
+            echo " 
+          <tr>
+            <td>$item->workout_id</td>
+            <td>Strength Training</td>
+            <td>Chest, Arms</td>
+            <td><a class='table_icons' href='member_profile.php?m_id=$item->workout_id' title='View'><button class='table_btn btn btn-out btn-primary btn-square '><i class='tb_i fa-1x fa fa-eye'></i></button></a>
+                              <a class='table_icons' href='add_member.php?m_id=$item->workout_id' title='Edit'><button class='table_btn btn btn-out btn-success btn-square'><i class='tb_i fa-1x fa fa-edit'></i></button></a>
+                              <a class='table_icons' href='#' title='Delete'><button class='table_btn btn btn-out btn-danger btn-square'><i class='tb_i fa-1x fa fa-trash'></button></i></a></td>
+          </tr>
+       
+         ";
+        }
+         echo "</tbody></table>"; 
+        
+          ?>                                  </div>
                                         </div>
                                     </div>
                                 </div>

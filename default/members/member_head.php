@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <?php
-include_once "top.php";
+if ($_SESSION["user"]["user_role"] == 2) {
+    include_once "../top.php";
+} else {
+    header("Location:../login/logout.php");
+}
+
 
 ?>
 
-</head>
 
 <body>
     <!-- Pre-loader start -->
@@ -335,7 +336,7 @@ include_once "top.php";
                                 <li class="pcoded-hasmenu ">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="fa fa-users"></i></span>
-                                        <span class="pcoded-mtext">Members</span>
+                                        <span class="pcoded-mtext">Schedule</span>
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="active">
@@ -505,3 +506,11 @@ include_once "top.php";
                     </nav>
 
                     <body>
+
+
+
+
+                    <?php
+
+include_once "../foot.php";
+?>

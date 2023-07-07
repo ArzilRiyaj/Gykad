@@ -1,5 +1,17 @@
 <?php
-include_once "../head.php";
+session_start();
+if ($_SESSION["user"]["user_role"] == 2) {
+    include_once "../head.php";
+} else {
+    header("Location:../login/logout.php");
+}
+
+include_once "trainer.php";
+
+$t = new trainer();
+
+$A = $t->get_trainer_by_id($_GET['t_id'])
+
 ?>
 
 
@@ -20,8 +32,8 @@ include_once "../head.php";
                                 <div class="col-lg-8">
                                     <div class="page-header-title">
                                         <div class="d-inline">
-                                            <h4>Sample Page</h4>
-                                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                            <h4><?= $A->trainer_fname ?></h4>
+
                                         </div>
                                     </div>
                                 </div>
@@ -44,8 +56,7 @@ include_once "../head.php";
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Hello Card</h5>
-                                            <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                            <h5>General Details</h5>
                                             <div class="card-header-right">
                                                 <ul class="list-unstyled card-option">
                                                     <li><i class="feather icon-maximize full-card"></i></li>
@@ -55,15 +66,28 @@ include_once "../head.php";
                                             </div>
                                         </div>
                                         <div class="card-block">
-                                            <p>
-                                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                sunt in culpa qui officia deserunt mollit anim id est laborum."
-                                            </p>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="card-body">
+                                                        <img src="" class="img-fluid" alt="Trainer Photo">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="card-body">
+                                                        <p class="card-text"><strong>NIC No:</strong> <?= $t->trainer_nic ?> </p>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="card-body">
+                                                        <p class="card-text"><strong>Phone No:</strong> <?= $t->trainer_phone_number ?> </p>
+                                                        <p class="card-text"><strong>Email:</strong> <?= $t->trainer_email ?> </p>
+                                                        <p class="card-text"><strong>Address:</strong> <?= $t->trainer_address ?> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

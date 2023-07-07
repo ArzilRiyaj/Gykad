@@ -1,3 +1,54 @@
+<?php
+include_once "login.php";
+// session_start();
+$db = new login();
+
+$error_msg="";
+
+if(isset($_POST['user_email'])){
+
+    $login_user = new login();
+
+    $res = $login_user->check_login($_POST['user_email'],$_POST['user_password']);
+
+    if($res==true){
+        
+        if($_SESSION["user"]["user_role"]==2){//member
+         
+          
+
+            if($result==null)
+            {header("location:../dashboard/index-1.php");}
+         
+
+                
+            }
+            elseif($_SESSION["user"]["user_role"]==3){ // 
+
+              if($result==null)
+              {header("location:../Trainers/trainer_dashboard.php");}
+           
+                  
+              }
+       
+
+                   
+
+
+
+       else{
+
+        header("location:../.php");}
+    }
+    else{
+
+    }
+    $error_msg="Incorrect Username or Password.Please try again";
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,17 +110,17 @@
                                     <div class="row m-b-20">
                                         <div class="col-md-12">
                                             <h3 class="text-center">Log In</h3>
-                                            <!-- <span style="color:red; text-align:center; display: flex; 
-       justify-content: center ">  Invalid Email Or Password</span> -->
+                                            <span style="color:red; text-align:center; display: flex; 
+       justify-content: center ">  <?=$error_msg?></span>
                                         </div>
                                         
                                     </div>
                                     <div class="form-group form-primary">
-                                        <input type="text" name="email" class="form-control" required placeholder="Your Email Address" >
+                                        <input type="text" name="user_email" class="form-control" required placeholder="Your Email Address" >
                                         <span class="form-bar"></span>
                                     </div>
                                     <div class="form-group form-primary">
-                                        <input type="password" name="password" class="form-control" required placeholder="Password">
+                                        <input type="password" name="user_password" class="form-control" required placeholder="Password">
                                         <span class="form-bar"></span>
                                     </div>
                                     <div class="row m-t-25 text-left">

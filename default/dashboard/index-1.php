@@ -1,5 +1,18 @@
 ﻿<?php
-include_once "../head.php";
+session_start();
+if($_SESSION["user"]["user_role"]==2){
+
+
+    include_once "../head.php";
+}
+else{
+    header("Location:../login/logout.php");
+}
+
+include_once "../members/member.php";
+$m=new Member();
+
+$m_count=$m->no_of_active_members();
 ?>
 
 <!-- ------------------------------------------------------------------------------------ -->
@@ -17,7 +30,7 @@ include_once "../head.php";
                                 <div class="card-block">
                                     <div class="row align-items-end">
                                         <div class="col-8">
-                                            <h3 class="text-white">124</h3>
+                                            <h3 class="text-white"><?= $m_count?></h3>
                                             <h6 class="text-white m-b-0">Active Members</h6>
                                         </div>
                                         <div class="col-4 text-left">

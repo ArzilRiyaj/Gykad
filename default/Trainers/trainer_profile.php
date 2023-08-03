@@ -7,9 +7,13 @@ if ($_SESSION["user"]["user_role"] == 2) {
 }
 
 include_once "trainer.php";
+include_once "../Attendence/attendence.php";
 
 $t = new trainer();
+$a = new attendance();
 
+
+$data = $a->get_attendance_trainer_id($_GET['t_id']);
 $A = $t->get_trainer_by_id($_GET['t_id'])
 
 ?>
@@ -39,7 +43,7 @@ $A = $t->get_trainer_by_id($_GET['t_id'])
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="page-header-breadcrumb">
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +91,81 @@ $A = $t->get_trainer_by_id($_GET['t_id'])
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+
+                        <!-- ============================================================================== -->
+
+                        <div class="page-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Attendance Report</h5>
+
+                                            <div class="card-header-right">
+                                                <ul class="list-unstyled card-option">
+                                                    <li><i class="feather icon-maximize full-card"></i></li>
+                                                    <li><i class="feather icon-minus minimize-card"></i></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+                                            <div class="container mt-5">
+
+                                                <div class="dt-responsive table-responsive">
+                                                    <?php
+                                                    echo "
+                        <table id='basic-btn' class='table table-striped table-bordered nowrap'>
+
+                          <thead>
+                            <tr>
+                              <th>Attendance Id </th>
+                              <th>Date</th>
+                              <th>In Time</th>
+                              <th>Out Time</th>
+                              <th>Time In Jym</th>
+                          
+                            </tr>
+                          </thead>
+                          <tbody>";
+                                                    foreach ($data as $item) {
+                                                        $checkInTime = new DateTime($item->attendance_check_in_time);
+                                                        $checkOutTime = new DateTime($item->attendance_check_out_time);
+                                                        $diff = $checkOutTime->diff($checkInTime);
+                                                        $timeSpent = $diff->format('%h hours %i minutes');
+
+                                                        echo " 
+                            
+                            <tr>
+                              <td>$item->attendance_id</td>
+                              <td>$item->attendance_date</td>
+                              <td>$item->attendance_check_in_time</td>
+                              <td>$item->attendance_check_out_time</td>
+                              <td>$timeSpent</td>
+                              
+                            </tr> 
+                                            
+
+                            ";
+                                                    }
+
+
+                                                    echo "</tbody></table>";
+
+                                                    ?>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>

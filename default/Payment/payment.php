@@ -247,21 +247,16 @@ JOIN package ON member.member_membership = package.package_id
         LEFT JOIN payment ON member.member_id = payment.payment_member
         AND payment.payment_date BETWEEN '$q' AND '$w'
         JOIN package ON package.package_id = member.member_membership
-        WHERE payment.payment_member IS NULL OR payment.payment_date IS NULL;
+        WHERE payment.payment_member IS NULL OR payment.payment_date IS NULL
+        AND DATE(member.member_regtime) < '$q';
         
         ";
 
-// AND member.member_regtime < 'start_date'
-// payment.payment_member IS NULL 
-        // $sql= "SELECT *
-        // FROM member
-        // LEFT JOIN payment ON member.member_id = payment.payment_member
-        // JOIN package ON package.package_id = member.member_membership
-        // WHERE payment.payment_member IS NULL AND payment.payment_date BETWEEN '$start_date' AND '$end_date'";
+
 
         $res = $this->db->query($sql);
         $all_payment = [];
-echo $sql;
+// echo $sql;
         while ($row = $res->fetch_array()) {
 
             $p = new payment();

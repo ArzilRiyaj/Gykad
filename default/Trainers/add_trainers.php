@@ -38,7 +38,7 @@ if (isset($_POST["trainer_fname"])) {
 
     // echo $result;
 
-     header("Location:manage_trainers.php?s=yes");
+     header("Location:add_trainers.php?s=yes");
     }
 }
 
@@ -191,5 +191,27 @@ else{
 <!-- ------------------------------------------------------------------------------------------- -->
 
 <?php
-include_once "../foot.php"
+include_once "../foot.php";
+
+
+
+if (isset($_GET['s'])) {
+
+
+    echo '<script>
+    swal({
+        title: "Success!",
+        text: "Trainer Successfully Added",
+        icon: "success",
+        button: "Ok",
+    }).then(function() {
+        window.location.href = "manage_trainers.php";
+      });
+    
+
+    
+    </script>';
+}
+
 ?>
+

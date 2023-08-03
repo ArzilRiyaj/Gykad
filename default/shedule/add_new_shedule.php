@@ -29,14 +29,14 @@ if (isset($_POST["workout"])) {
     $s->schedule_trainer = $_SESSION["user"]["user_id"];
 
     $s->schedule_name = $_POST["schedule_name"];
-    // $sl->schedule_list_weight= $_POST["schedule_list_weight"];
+ 
 
 
     $r = $s->insert_schedule();
 
     $sl->insert_schedule_list($r);
 
-    // $sl->test($r);
+   
 
 
 
@@ -283,7 +283,7 @@ include_once "../foot.php"
          $("#sets").val("");
         $("#reps").val("");
    
-       
+        $("#dis").val("");
     }
 
 

@@ -15,7 +15,9 @@ include_once "schedule_list.php";
 include_once "../Trainers/trainer.php";
 include_once "../members/member.php";
 include_once "assigned_schedule.php";
+include_once "schedule_status.php";
 
+$st= new schedule_status;
 $m = new member();
 $s = new Schedule();
 $sl = new schedule_list();
@@ -42,7 +44,20 @@ $li = $sl->get_Schedule_List_by_schedule_id($_GET['s_id']);
 $mem = $m->get_members_by_trainer_id($_SESSION["user"]["user_id"]);
 
 
+
+
+if (isset($_POST["submit"])) {
+
+
+   $st->insert_schedule_status($_GET['s_id']);
+}
+
+
+
+
+
 ?>
+
 
 
 
@@ -96,7 +111,7 @@ $mem = $m->get_members_by_trainer_id($_SESSION["user"]["user_id"]);
                                     </div>
                                     <div class="card-block">
 
-
+<form action="view_schedule.php?s_id= <?= $_GET['s_id'] ?>" method="POST">
                                         <div class="table-responsive">
                                             <?php
                                             echo "
@@ -109,6 +124,7 @@ $mem = $m->get_members_by_trainer_id($_SESSION["user"]["user_id"]);
         <th>Reps</th>
         <th>Description</th>
         <th>Action</th>
+        <th>status</th>
       </tr>
     </thead>
     <tbody>
@@ -118,11 +134,18 @@ $mem = $m->get_members_by_trainer_id($_SESSION["user"]["user_id"]);
                                                 echo " 
                             
       <tr>
-        <td>$item->workout_name</td>
+        <td>$item->workout_name <input type='text' hidden value='$item->schedule_list_id' name='schedule_status_workout[]'> </td>
         <td>$item->schedule_list_weight</td>
         <td>$item->schedule_list_sets</td>
         <td>$item->schedule_list_reps</td>
         <td>$item->schedule_list_dis</td>
+        <td> <select name='schedule_status_workout_status[]'>
+        <option value='com'> Completed </option>
+        <option value ='not_com'> NotCompleted </option>
+        
+
+        </select>   
+         </td>
         <td><a class='table_icons' href='../Workouts/view_workout.php?w_id=$item->schedule_list_workout' title='View'><button class='table_btn btn btn-out btn-primary btn-square '><i class='tb_i fa-1x fa fa-eye'></i></button></a></td>
       </tr>
      
@@ -134,8 +157,9 @@ $mem = $m->get_members_by_trainer_id($_SESSION["user"]["user_id"]);
 
                                             ?>
                                         </div>
+                                        <button type="submit" name="submit" class="btn btn-primary">Update Status</button>
 
-
+                                        </form>
                                     </div>
 
                                     <div id="assign" class="">
@@ -163,7 +187,7 @@ $mem = $m->get_members_by_trainer_id($_SESSION["user"]["user_id"]);
                                                         <!-- Add more form fields here -->
                                                         <div class="form-group row">
                                                             <div class="col-sm-10 offset-sm-2">
-                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                                             </div>
                                                         </div>
                                                     </form>

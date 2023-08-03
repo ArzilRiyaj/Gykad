@@ -77,7 +77,7 @@ $data=$s->get_all_schedule();
             <tr>
                 <th>Schedule ID</th>
                 <th>Schedule Name</th>
-                <th>Added By</th>
+            
                 <th>Action</th>
             </tr>
         </thead>
@@ -91,7 +91,7 @@ $data=$s->get_all_schedule();
                 <tr>
                 <td>$item->schedule_id</td>
                 <td> $item->schedule_name</td>
-                <td>$item->schedule_trainer </td>
+           
   <td>
   <a class='table_icons' href='view_schedule.php?s_id=$item->schedule_id' title='View'><button class='table_btn btn btn-out btn-primary btn-square '><i class='tb_i fa-1x fa fa-eye'></i></button></a>
   <a class='table_icons' href='edit_schedule.php?s_id=$item->schedule_id' title='Edit'><button class='table_btn btn btn-out btn-success btn-square'><i class='tb_i fa-1x fa fa-edit'></i></button></a>

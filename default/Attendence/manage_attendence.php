@@ -42,6 +42,7 @@ if (isset($_POST["attendance_check_out_time"])) {
     $a->update_attendance($uid,$out_time);
 }
 
+
 $all = $m->get_all_active_members();
 
 
@@ -123,18 +124,7 @@ if ($_SESSION["user"]["user_role"] == 2) {
                                                                 } ?>
                                                             </select>
                                                         </div>
-                                                        <!-- <div class="form-group col-md-6">
-                                                            <label for="member">Member Name</label>
-                                                            <select class="js-example-basic-single col-sm-12 select2-hidden-accessible" tabindex="-1" aria-hidden="true" id="memberName">
-                                                                <?php foreach ($all as $item) {
-                                                                    if ($item->member_id == $m->member_fname) {
-                                                                        echo "<option value='$item->member_id' selected='selected'>$item->member_fname</option>";
-                                                                    } else {
-                                                                        echo "<option value='$item->member_id'>$item->member_fname</option>";
-                                                                    }
-                                                                } ?>
-                                                            </select>
-                                                        </div> -->
+                                                     
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-3">

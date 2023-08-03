@@ -18,6 +18,7 @@ class trainer
     public $trainer_password;
 
     public $attendance_check_in_time;
+    public $attendance_check_out_time;
 
     private $db;
 
@@ -173,8 +174,9 @@ class trainer
             $t->trainer_address = $row["trainer_address"];
             $t->trainer_status = $row["trainer_status"];
             $t->trainer_regtime = $row["trainer_regtime"];
-            // $t->trainer_password = $row["trainer_password"];
-
+        
+            $t->attendance_check_in_time = $row["attendance_check_in_time"];
+            $t->attendance_check_out_time = $row["attendance_check_out_time"];
 
 
 

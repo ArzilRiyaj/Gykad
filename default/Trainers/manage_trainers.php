@@ -78,7 +78,7 @@ $data =$t->get_all_trainer();
 
                                             <?php
 echo "
-                                                <table class='table table-striped'>
+                                                <table id='basic-btn' class='table table-striped'>
                                                     <thead>
                                                         <tr>
                                                             <th>Name</th>

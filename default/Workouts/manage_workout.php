@@ -68,7 +68,7 @@ $data=$w->get_all_workout();
                                             <div class="card-block">
                                             <?php
 echo "
-                                            <table class='table table-striped'>
+                                            <table id='basic-btn' class='table table-striped'>
         <thead>
           <tr>
             <th>Workout Name</th>
@@ -88,7 +88,7 @@ echo "
             <td> $item->workout_target</td>
             <td ><a class='table_icons' href='view_workout.php?w_id=$item->workout_id' title='View'><button class='table_btn btn btn-out btn-primary btn-square '><i class='tb_i fa-1x fa fa-eye'></i></button></a>
                               <a class='table_icons actionButtons' href='add_workout.php?w_id=$item->workout_id' title='Edit'><button class='table_btn btn btn-out btn-success btn-square'><i class='tb_i fa-1x fa fa-edit'></i></button></a>
-                          <button onclick='delete_workout($item->workout_id)' class='table_btn btn btn-out btn-danger btn-square'><i class='tb_i fa-1x fa fa-trash'></button></i></td>
+                          <button onclick='delete_workout($item->workout_id)' class='actionButtons table_btn btn btn-out btn-danger btn-square'><i class='tb_i fa-1x fa fa-trash'></button></i></td>
           </tr>
        
          ";

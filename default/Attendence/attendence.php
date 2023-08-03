@@ -33,7 +33,7 @@ class attendance
         $this->db->query($sql);
         $a_id = $this->db->insert_id;
 
-        echo $sql;
+      
 
         return $a_id;
     }
@@ -84,6 +84,36 @@ function get_attendance_member_id($member){
 
     $all_att = [];
     $sql ="SELECT * FROM `attendance` WHERE `attendance_member_id` = '$member'";
+
+
+    $res = $this->db->query($sql);
+
+
+    while ($row = $res->fetch_array()) {
+
+        $a = new attendance();
+
+        $a->attendance_id = $row["attendance_id"];
+        $a->attendance_user_role = $row["attendance_user_role"];
+        $a->attendance_member_id = $row["attendance_member_id"];
+        $a->attendance_date = $row["attendance_date"];
+        $a->attendance_check_in_time = $row["attendance_check_in_time"];
+        $a->attendance_check_out_time = $row["attendance_check_out_time"];
+
+
+        $all_att[] = $a;
+    }
+    return $all_att;
+}
+
+
+function get_attendance_trainer_id($member){
+
+
+    $all_att = [];
+    $sql ="SELECT * FROM `attendance` 
+    WHERE `attendance_member_id` = '$member'
+    AND (`attendance_user_role`='3')";
 
 
     $res = $this->db->query($sql);

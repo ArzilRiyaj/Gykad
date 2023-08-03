@@ -56,13 +56,7 @@ if ($_SESSION["user"]["user_role"] == 2) {
 }
 
 
-
-
-
-
 ?>
-
-
 
 
 
@@ -193,7 +187,7 @@ if ($_SESSION["user"]["user_role"] == 2) {
                                                                 <tr>
                                                                     <td>$item->trainer_reg_no</td>
                                                                     <td>$item->trainer_fname</td>
-                                                                    <td><input type='time' class='form-control' value='" . date('H:i', strtotime($item->attendance_check_in_time)) . "' id='attendance_check_in_time1' name='attendance_check_in_time1' readonly></td>
+                                                                    <td><input type='time' class='form-control' value='" . date('H:i', strtotime($item->attendance_check_in_time)) .  "' id='attendance_check_in_time1' name='attendance_check_in_time1' readonly></td>
                                                                     <td><input type='time' class='form-control' id='attendance_check_out_time' name='attendance_check_out_time'></td>
                                                                     <td><button type='submit' class='btn btn-primary' name='submit'>Check Out</button></td>
                                                                      <input type='hidden' name='uid' value='$item->trainer_id'>
@@ -244,10 +238,10 @@ include_once "../foot.php"
 
         
         document.getElementById("attendance_check_in_time").value = formattedTime;
-        document.getElementById("attendance_check_out_time").value = formattedTime;
+        // document.getElementById("attendance_check_out_time").value = formattedTime;
     }
 
-    // Update the check-in time initially
+ 
     updateattendance_check_in_time();
 
 

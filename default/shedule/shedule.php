@@ -56,7 +56,7 @@ function update_schedule($s){
     $sql="UPDATE  `schedule` SET schedule_name = '$this->schedule_name'
     WHERE schedule_id = '$s'";
 
-echo $sql;
+
     $this->db->query($sql);
 
 }

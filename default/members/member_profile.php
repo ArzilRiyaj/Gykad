@@ -11,6 +11,9 @@ if ($_SESSION["user"]["user_role"] == 2) {
 include_once "member.php";
 include_once "../Attendence/attendence.php";
 include_once "../Payment/payment.php";
+include_once "../weight/weight.php";
+
+$w = new weight();
 $a = new attendance();
 $p = new payment();
 $m = new member();
@@ -236,31 +239,108 @@ $pay =  $p->get_payments_by_member_id($_GET['m_id'])
                                 </div>
                             </div>
 
-
-
-
-
-
-
                         </div>
+
+                        <!-- ----------------------------------------------------------------------------- -->
+                        <div class="page-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5></h5>
+                                            <div class="card-header-right">
+                                                <ul class="list-unstyled card-option">
+                                                    <li><i class="feather icon-maximize full-card"></i></li>
+                                                    <li><i class="feather icon-minus minimize-card"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+                                            <div class="col-md-12 ">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Weight Progress</h5>
+
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div id="weight"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
 
+
                 </div>
+
             </div>
         </div>
-
     </div>
 
-
-    <?php
-    include_once "../foot.php";
-
-
-    ?>
+</div>
 
 
 
 
+<!-- --------------------------------------------------------------------------------- -->
+<?php
+include_once "../foot.php";
+?>
+
+
+
+
+<script>
+    var avg_w = <?= $w->get_average_weight_by_month($_GET['m_id']); ?>;
+    const keysArray = [];
+    const valuesArray = [];
+
+    for (const key in avg_w) {
+        if (avg_w.hasOwnProperty(key)) {
+            keysArray.push(key);
+            valuesArray.push(avg_w[key]);
+        }
+    }
+
+    console.log(keysArray);
+    console.log(valuesArray);
+    valuesArray.unshift('Weight');
+
+
+    var chart = c3.generate({
+
+        bindto: '#weight',
+        data: {
+            columns: [
+                valuesArray,
+
+            ],
+
+            type: 'bar',
+            colors: {
+
+                data4: '#AB8CE4',
+
+            },
+            types: {
+                Weight: 'line',
+            },
+        },
+        axis: {
+            x: {
+                type: 'category',
+                categories: keysArray,
+
+            }
+        }
+    });
+</script>
 
 
 
@@ -268,5 +348,4 @@ $pay =  $p->get_payments_by_member_id($_GET['m_id'])
 
 
 
-
-    <!-- ------------------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------------------- -->

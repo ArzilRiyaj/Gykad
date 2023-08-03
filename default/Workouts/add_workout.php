@@ -124,6 +124,7 @@ if ($_SESSION["user"]["user_role"] == 2) {
                                                             <option <?php if ($w->workout_target == 'Chest') { ?> selected="selected" <?php } ?> value="Chest">Chest</option>
                                                             <option <?php if ($w->workout_target == 'Back') { ?> selected="selected" <?php } ?> value="Chest">Back</option>
                                                             <option <?php if ($w->workout_target == 'Triceps') { ?> selected="selected" <?php } ?> value="Triceps">Triceps</option>
+                                                            <option <?php if ($w->workout_target == 'Full Body') { ?> selected="selected" <?php } ?> value="Full Body">Full Body</option>
 
 
 

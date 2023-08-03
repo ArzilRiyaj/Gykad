@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if ($_SESSION["user"]["user_role"] == 2) {
     include_once "../head.php";
 } elseif ($_SESSION["user"]["user_role"] == 3) {
@@ -8,7 +9,6 @@ if ($_SESSION["user"]["user_role"] == 2) {
 } else {
     header("Location:../login/logout.php");
 }
-
 
 
 include_once "../Workouts/workout.php";
@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
 
     $s->update_schedule($_POST["s_id"]);
    $sl->insert_schedule_list($_POST["s_id"]);
-
+  
 
 
 
@@ -190,12 +190,12 @@ $scl = $sl->get_Schedule_List_by_schedule_id($_GET["s_id"]);
                                                                 <?php foreach ($scl as $item) :  ?>
                                                                     <td>*</td>
                                                                     <td><input type='text' name='' value='<?= $item->workout_name ?>' class='borderless-input' readonly>
-                                                                        <input type='text' value='<?= $item->schedule_list_workout ?>' name='schedule_list_workout[]' class='borderless-input' hidden readonly>
+                                                                        <input type='text' value='<?= $item->schedule_list_workout ?>' name=' class='borderless-input' hidden readonly>
                                                                     </td>
-                                                                    <td><input type='text' value='<?= $item->schedule_list_weight ?>' name='schedule_list_weight[]' class='borderless-input'></td>
-                                                                    <td><input type='text' value='<?= $item->schedule_list_reps ?>' name='schedule_list_sets[]' class='borderless-input'></td>
-                                                                    <td><input type='text' value='<?= $item->schedule_list_reps ?>' name='schedule_list_reps[]' class='borderless-input'></td>
-                                                                    <td><textarea class='form-control borderless-input' id='description' name='schedule_list_dis[]' rows='3'><?= $item->schedule_list_dis ?></textarea></td>
+                                                                    <td><input type='text' value='<?= $item->schedule_list_weight ?>' name='' class='borderless-input'></td>
+                                                                    <td><input type='text' value='<?= $item->schedule_list_reps ?>' name=']' class='borderless-input'></td>
+                                                                    <td><input type='text' value='<?= $item->schedule_list_reps ?>' name='' class='borderless-input'></td>
+                                                                    <td><textarea class='form-control borderless-input' id='description' name='' rows='3'><?= $item->schedule_list_dis ?></textarea></td>
                                                                     <td><button type='button' class='btn btn-sm btn-danger remove-row' onclick="remove_workout(<?= $item->schedule_list_id ?>)">Remove</button></td>
                                                             </tr>
                                                         <?php endforeach;  ?>

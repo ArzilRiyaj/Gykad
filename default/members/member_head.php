@@ -277,7 +277,7 @@ $mem = $m->get_member_by_id($_SESSION["user"]["user_id"]);
 
                             </ul>
 
-                            <ul class="pcoded-item pcoded-left-item">
+                            <!-- <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
                                     <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
                                         <span class="pcoded-micon"><i class="fa fa-file-text"></i></i></span>
@@ -285,10 +285,10 @@ $mem = $m->get_member_by_id($_SESSION["user"]["user_id"]);
                                     </a>
                                 </li>
 
-                            </ul>
+                            </ul> -->
 
 
-                            <ul class="pcoded-item pcoded-left-item">
+                            <!-- <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
                                     <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
                                         <span class="pcoded-micon"><i class="feather icon-monitor"></i></span>
@@ -296,7 +296,7 @@ $mem = $m->get_member_by_id($_SESSION["user"]["user_id"]);
                                     </a>
                                 </li>
 
-                            </ul>
+                            </ul> -->
                         </div>
                     </nav>
 

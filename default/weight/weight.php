@@ -38,7 +38,7 @@ class weight
     }
 
     
-    
+    // --------------------------------------------------------------------------------------------------
 
     function get_average_weight_by_month($mem) {
         $sql = "SELECT DATE_FORMAT(weight_date, '%Y-%m') AS month, AVG(weight_kg) AS average_weight
@@ -57,10 +57,7 @@ class weight
         
     }
     
-function get_weight_by_member_id(){
 
-    
-}
 
     
 

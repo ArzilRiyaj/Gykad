@@ -30,7 +30,7 @@ if (isset($_POST["weight_kg"])) {
 $weight = $w->get_average_weight_by_month($_SESSION["user"]["user_id"]);
 
 
-var_dump($weight);
+// var_dump($weight);
 ?>
 
 
@@ -149,14 +149,14 @@ include_once "../foot.php";
 ?>
 
 <script>
-    var age_18_20 = <?= $w->get_average_weight_by_month($_SESSION["user"]["user_id"]); ?>;
+    var avg_w = <?= $w->get_average_weight_by_month($_SESSION["user"]["user_id"]); ?>;
     const keysArray = [];
     const valuesArray = [];
 
-    for (const key in age_18_20) {
-        if (age_18_20.hasOwnProperty(key)) {
+    for (const key in avg_w) {
+        if (avg_w.hasOwnProperty(key)) {
             keysArray.push(key);
-            valuesArray.push(age_18_20[key]);
+            valuesArray.push(avg_w[key]);
         }
     }
 
@@ -189,7 +189,6 @@ include_once "../foot.php";
                 type: 'category',
                 categories: keysArray,
 
-                // categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             }
         }
     });

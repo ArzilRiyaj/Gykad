@@ -130,7 +130,7 @@ if(isset($_POST['user_email'])){
                                         <input type="password" name="user_password" class="form-control" required placeholder="Password">
                                         <span class="form-bar"></span>
                                     </div>
-                                    <div class="row m-t-25 text-left">
+                                    <!-- <div class="row m-t-25 text-left">
                                         <div class="col-12">
                                             <div class="checkbox-fade fade-in-primary d-">
                                                 <label>
@@ -143,7 +143,7 @@ if(isset($_POST['user_email'])){
                                                 <a href="auth-reset-password.htm" class="text-right f-w-600"> Forgot Password?</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row m-t-30">
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Log In</button>

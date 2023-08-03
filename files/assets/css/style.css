@@ -262,7 +262,8 @@
         position: absolute;
         left: 10px;
         top: 10px;
-        right: auto
+        right: auto;
+        float: left;
     }
     .header-navbar .navbar-wrapper .navbar-logo .mobile-search {
         display: block;

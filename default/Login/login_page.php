@@ -13,7 +13,7 @@ if(isset($_POST['user_email'])){
 
     if($res==true){
         
-        if($_SESSION["user"]["user_role"]==2){//member
+        if($_SESSION["user"]["user_role"]==2){//admin
          
           
 
@@ -23,13 +23,20 @@ if(isset($_POST['user_email'])){
 
                 
             }
-            elseif($_SESSION["user"]["user_role"]==3){ // 
+            elseif($_SESSION["user"]["user_role"]==3){ // trainer
 
               if($result==null)
               {header("location:../Trainers/trainer_dashboard.php");}
            
                   
               }
+              elseif($_SESSION["user"]["user_role"]==1){ // member
+
+                if($result==null)
+                {header("location:../members/member_dashboard.php ");}
+             
+                    
+                }
        
 
                    

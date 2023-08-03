@@ -1,10 +1,26 @@
 <?php
-include_once "../head.php";
+session_start();
 include_once "workout.php";
 
-$w = new workout();
+if ($_SESSION["user"]["user_role"] == 2) {
+    include_once "../head.php";
+} elseif($_SESSION["user"]["user_role"] == 3){
+    include_once "../Trainers/trainer_head.php";
+}
 
+else {
+    header("Location:../login/logout.php");
+}
+$w = new workout();
+if (isset($_GET["did"]))
+{
+	$workout_id=$_GET["did"];
+	$w->delete_workout($workout_id);
+}
 $data=$w->get_all_workout();
+
+
+
 
 ?>
 
@@ -58,6 +74,8 @@ echo "
             <th>Workout Name</th>
             <th>Category</th>
             <th>Target Muscle Group</th>
+            <th>Action</th>
+
           </tr>
         </thead>
         <tbody>";
@@ -65,12 +83,12 @@ echo "
 
             echo " 
           <tr>
-            <td>$item->workout_id</td>
-            <td>Strength Training</td>
-            <td>Chest, Arms</td>
-            <td><a class='table_icons' href='member_profile.php?m_id=$item->workout_id' title='View'><button class='table_btn btn btn-out btn-primary btn-square '><i class='tb_i fa-1x fa fa-eye'></i></button></a>
-                              <a class='table_icons' href='add_member.php?m_id=$item->workout_id' title='Edit'><button class='table_btn btn btn-out btn-success btn-square'><i class='tb_i fa-1x fa fa-edit'></i></button></a>
-                              <a class='table_icons' href='#' title='Delete'><button class='table_btn btn btn-out btn-danger btn-square'><i class='tb_i fa-1x fa fa-trash'></button></i></a></td>
+            <td>$item->workout_name</td>
+            <td> $item->workout_category</td>
+            <td> $item->workout_target</td>
+            <td ><a class='table_icons' href='view_workout.php?w_id=$item->workout_id' title='View'><button class='table_btn btn btn-out btn-primary btn-square '><i class='tb_i fa-1x fa fa-eye'></i></button></a>
+                              <a class='table_icons actionButtons' href='add_workout.php?w_id=$item->workout_id' title='Edit'><button class='table_btn btn btn-out btn-success btn-square'><i class='tb_i fa-1x fa fa-edit'></i></button></a>
+                          <button onclick='delete_workout($item->workout_id)' class='table_btn btn btn-out btn-danger btn-square'><i class='tb_i fa-1x fa fa-trash'></button></i></td>
           </tr>
        
          ";
@@ -96,5 +114,41 @@ echo "
     <!-- ------------------------------------------------------------------------------------------- -->
 
     <?php
-    include_once "../foot.php"
+    include_once "../foot.php";
+
+    if (isset($_GET['s'])) {
+
+
+        echo '<script>
+        swal({
+            title: "Success!",
+            text: "Workout Successfully Added",
+            icon: "success",
+            button: "Ok",
+          });
+    
+        
+        </script>';
+    }
     ?>
+
+
+
+<script>
+    var actionButtons = document.querySelectorAll('.actionButtons');
+    var userRole = "<?php echo $_SESSION['user']['user_role']; ?>";
+
+    if (userRole === '3') {
+        for (var i = 0; i < actionButtons.length; i++) {
+            actionButtons[i].style.display = 'none';
+        }
+    }
+
+
+    function delete_workout(d) {
+    if (confirm("Arw you sure you want to delete workout " + d)) {
+        window.location.href = "manage_workout.php?did=" + d;
+    }
+}
+    
+</script>

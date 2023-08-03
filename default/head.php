@@ -4,6 +4,11 @@
 <head>
     <?php
 include_once "top.php";
+include_once "admin/admin.php";
+
+$a = new admin();
+
+$ad= $a->get_admin_by_id($_SESSION["user"]["user_id"]);
 
 ?>
 
@@ -87,7 +92,7 @@ include_once "top.php";
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            <li class="header-notification">
+                            <!-- <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="feather icon-bell"></i>
@@ -143,21 +148,21 @@ include_once "top.php";
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
-                            <li class="header-notification">
+                            </li> -->
+                            <!-- <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
                                         <i class="feather icon-message-square"></i>
                                         <span class="badge bg-c-green">3</span>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="..\..\files\assets\images\avatar-4.jpg" class="img-radius"
                                             alt="User-Profile-Image">
-                                        <span>John Doe</span>
+                                        <span><?= $ad->admin_fname  ?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu"
@@ -188,7 +193,7 @@ include_once "top.php";
             </nav>
 
             <!-- Sidebar chat start -->
-            <div id="sidebar" class="users p-chat-user showChat">
+            <!-- <div id="sidebar" class="users p-chat-user showChat">
                 <div class="had-container">
                     <div class="card card_main p-fixed users-main">
                         <div class="user-box">
@@ -270,7 +275,7 @@ include_once "top.php";
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Sidebar inner chat start-->
             <div class="showChat_inner">
                 <div class="media chat-inner-header">
@@ -390,7 +395,12 @@ include_once "top.php";
                                     <ul class="pcoded-submenu">
                                         <li class="">
                                             <a href="../Attendence/manage_attendence.php ">
-                                                <span class="pcoded-mtext">Manage Attendance</span>
+                                                <span class="pcoded-mtext">Manage Member Attendance</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="../Attendence/manage_trainer_attendence.php ">
+                                                <span class="pcoded-mtext">Manage Trainer Attendance</span>
                                             </a>
                                         </li>
 
@@ -419,6 +429,7 @@ include_once "top.php";
                                                 <span class="pcoded-mtext">Add Workouts</span>
                                             </a>
                                         </li>
+                                        
 
 
                                     </ul>
@@ -437,13 +448,13 @@ include_once "top.php";
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="../Workouts/manage_workout.php ">
-                                                <span class="pcoded-mtext">Manage Workouts</span>
+                                            <a href="../payment/manage_payment.php ">
+                                                <span class="pcoded-mtext">Manage Payment</span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="../Workouts/add_workout.php ">
-                                                <span class="pcoded-mtext">Add Workouts</span>
+                                            <a href="../payment/add_payment.php ">
+                                                <span class="pcoded-mtext">Add Payment</span>
                                             </a>
                                         </li>
 
@@ -454,12 +465,41 @@ include_once "top.php";
 
                             </ul>
 
-                            <!-- membership -->
+                                <!-- Workout Schedule -->
+
+                                <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fa fa-money"></i></span>
+                                        <span class="pcoded-mtext">Workout Schedule</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+
+                                    <li class="">
+                                            <a href="../shedule/manage_schedule.php ">
+                                                <span class="pcoded-mtext">Manage Schedule</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="../shedule/add_new_shedule.php ">
+                                                <span class="pcoded-mtext">Add New Schedule</span>
+                                            </a>
+                                        </li>
+                                        
+
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+
+                            <!-- package -->
 
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu ">
                                     <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="fa fa-money"></i></span>
+                                        <span class="pcoded-micon"><i class="fa fa-plus-square-o"></i></span>
                                         <span class="pcoded-mtext">packages</span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -481,7 +521,58 @@ include_once "top.php";
 
                             </ul>
 
+
+                            <!-- Admin -->
                             <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
+                                        <span class="pcoded-mtext">Admin</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="active">
+                                            <a href="../admin/manage_admin.php ">
+                                                <span class="pcoded-mtext">Manage Admin</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="../admin/add_admin.php">
+                                                <span class="pcoded-mtext "> Add Admin</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+
+
+                               <!-- Reports -->
+                               <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="fa fa-file-text"></i></i></span>
+                                        <span class="pcoded-mtext">Reports</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="active">
+                                            <a href="../reports/monthly_income_report.php ">
+                                                <span class="pcoded-mtext">Income Report</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="../reports/member_not_payed.php ">
+                                                <span class="pcoded-mtext "> Members Not Payed</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                            <!-- <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
                                     <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
                                         <span class="pcoded-micon"><i class="fa fa-file-text"></i></i></span>
@@ -489,7 +580,7 @@ include_once "top.php";
                                     </a>
                                 </li>
 
-                            </ul>
+                            </ul> -->
 
 
                             <ul class="pcoded-item pcoded-left-item">

@@ -84,7 +84,7 @@ echo "
                           <thead>
                             <tr>
                               <th>Name</th>
-                              <th>NIC NO</th>
+                              <th>Registration NO</th>
                               <th>Membership</th>
                               <th>Personal Trainer</th>
                               <th>Phone NO</th>
@@ -98,9 +98,9 @@ echo "
                             
                             <tr>
                               <td>$item->member_fname</td>
-                              <td>$item->member_nic</td>
-                              <td>$item->member_membership</td>
-                              <td>$item->member_ptrainer</td>
+                              <td>$item->member_reg_no</td>
+                              <td>$item->package_name</td>
+                              <td>$item->trainer_fname</td>
                               <td>$item->member_phone_number</td>
                               <td>
                               <a class='table_icons' href='member_profile.php?m_id=$item->member_id' title='View'><button class='table_btn btn btn-out btn-primary btn-square '><i class='tb_i fa-1x fa fa-eye'></i></button></a>
@@ -175,19 +175,16 @@ function delete_member(d) {
 
 <?php
 
-if (isset($_GET['e'])) {
 
 
-  echo '<script>
-  swal({
+
+include_once "../foot.php"
+?>
+
+
+<!-- swal({
       title: "Success!",
       text: "Member Successfully Edited",
       icon: "success",
       button: "Ok",
-    });
-
-  
-  </script>';
-}
-include_once "../foot.php"
-?>
+    }); -->

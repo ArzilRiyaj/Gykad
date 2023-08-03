@@ -117,7 +117,7 @@ $(document).ready(function() {
         data: {
             // iris data from R
             columns: [
-                ['data1', 30],
+                ['data1', 130],
                 ['data2', 120],
             ],
             type: 'pie',

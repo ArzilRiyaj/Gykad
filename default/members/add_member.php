@@ -4,13 +4,17 @@ session_start();
 include_once "member.php"; // include member class
 include_once "../Login/login.php";
 include_once "../Trainers/trainer.php";
+include_once "../packages/packages.php";
 
 $t = new trainer();
 $lg_member = new login();
-$m = new member(); 
+$m = new member();
+$p = new package();
 
 
 $all = $t->get_all_trainer();
+$all_pac = $p->get_all_active_package();
+
 
 if (isset($_GET["m_id"])) {
     $m = $m->get_member_by_id($_GET["m_id"]);
@@ -23,6 +27,8 @@ if (isset($_POST["member_fname"])) {
     $m->member_fname = $_POST["member_fname"];
     $m->member_sname = $_POST["member_sname"];
     $m->member_dob = $_POST["member_dob"];
+    $m->member_nic = $_POST["member_nic"];
+    $m->member_gender = $_POST["member_gender"];
     $m->member_age = $_POST["member_age"];
     $m->member_membership = $_POST["member_membership"];
     $m->member_ptrainer = $_POST["member_ptrainer"];
@@ -30,22 +36,23 @@ if (isset($_POST["member_fname"])) {
     $m->member_phone_number = $_POST["member_phone_number"];
     $m->member_address = $_POST["member_address"];
 
+    $m->member_reg_no = $m->member_reg_no();
+
     $lg_member->user_name = $_POST["member_fname"];
     $lg_member->user_email = $_POST["member_email"];
     $lg_member->user_role = "1";
     $lg_member->user_password = $_POST["member_password"];
 
-    if(isset($_POST["m_id"])){
+    if (isset($_POST["m_id"])) {
         $m->update_member($_POST["m_id"]);
-        header("Location:manage_member.php?e=yes"); 
-    }
-    else{
-    $result = $m->insert_member();
-    $lg_member->insert_login($result);
-     header("Location:add_member.php?s=yes");
+        header("Location:add_member.php?e=yes");
+    } else {
+        $result = $m->insert_member();
+        $lg_member->insert_login($result);
+         header("Location:add_member.php?s=yes");
     }
     // echo $result;
-   
+
 }
 
 
@@ -110,18 +117,18 @@ if ($_SESSION["user"]["user_role"] == 2) {
                                     <div class="card">
                                         <div class="card-header">
                                             <h5> <?php
-                                                if (isset($_GET["m_id"])) {
-                                                    echo " Edit Member  ";
-                                                } else
-                                                    echo "Add New Member"
+                                                    if (isset($_GET["m_id"])) {
+                                                        echo " Edit Member  ";
+                                                    } else
+                                                        echo "Add New Member"
 
-                                                ?></h5>
+                                                    ?></h5>
 
                                             <div class="card-header-right">
                                                 <ul class="list-unstyled card-option">
                                                     <li><i class="feather icon-maximize full-card"></i></li>
                                                     <li><i class="feather icon-minus minimize-card"></i></li>
-                                                    
+
 
                                                 </ul>
                                             </div>
@@ -133,11 +140,12 @@ if ($_SESSION["user"]["user_role"] == 2) {
                                                     <div class="col-md-6">
                                                         <div class="row">
                                                             <?php
-                                                        if(isset($_GET["m_id"])){
-                                                            echo"
-                                                        <input type='text' class='form-control' name='m_id' id='m_id'  value='".$_GET['m_id'] ." '  placeholder='Enter  first name' hidden required>
-";}
-                                                        ?>
+                                                            if (isset($_GET["m_id"])) {
+                                                                echo "
+                                                        <input type='text' class='form-control' name='m_id' id='m_id'  value='" . $_GET['m_id'] . " '  placeholder='Enter  first name' hidden required>
+";
+                                                            }
+                                                            ?>
                                                             <div class="form-group col-md-6">
                                                                 <label for="firstName">First Name:</label>
                                                                 <input type="text" class="form-control" name="member_fname" id="firstName" value="<?= $m->member_fname ?>" placeholder="Enter  first name" required>
@@ -151,7 +159,7 @@ if ($_SESSION["user"]["user_role"] == 2) {
 
                                                         <div class="form-group">
                                                             <label for="dob">Date of Birth:</label>
-                                                            <input type="date" class="form-control" name="member_dob" id="member_dob" value="<?= $m->member_dob ?>" onchange="calculateAge();" max="2005-12-31">
+                                                            <input type="date" class="form-control" name="member_dob" id="member_dob" value="<?= $m->member_dob ?>" onchange="calculateAge();" max="2005-12-31" required>
                                                         </div>
 
                                                         <div class="form-group">
@@ -159,25 +167,48 @@ if ($_SESSION["user"]["user_role"] == 2) {
                                                             <input type="number" class="form-control" name="member_age" id="member_age" value="<?= $m->member_age ?>" placeholder="Enter  age">
                                                         </div>
 
+                                                        <div class="form-group">
+                                                            <label for="gender">Gender:</label>
+                                                            <br>
+                                                            <div class="radio radio-inline">
+                                                                <label>
+                                                                    <input type="radio" name="member_gender"  value="Male" <?php if ($m->member_gender == "Male") {
+                                                                                                                        echo "checked";
+                                                                                                                    } ?>>
+                                                                   Male
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio radio-inline">
+                                                                <label>
+                                                                    <input type="radio" value="Female" name="member_gender" 
+                                                                    <?php if ($m->member_gender == "Female") { echo "checked";
+                                                                                                                    } ?>>
+                                                                    Female
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="form-group ">
                                                             <label for="nic">NIC NO:</label>
-                                                            <input type="text" class="form-control" name="member_nic" id="member_nic" value="<?= $m->member_nic ?>" placeholder="Enter NIC NO" >
+                                                            <input type="text" class="form-control" name="member_nic" id="member_nic" value="<?= $m->member_nic ?>" placeholder="Enter NIC NO" pattern="[0-9]{9}[V]">
                                                             <!-- <span style="color: red;">Member with this NIC NO already registered</span> -->
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="membership">Membership:</label>
                                                             <select class="form-control" id="membership" name="member_membership">
-                                                                <option value="">Select membership type</option>
-                                                                <option value="basic">Basic</option>
-                                                                <option value="premium">Premium</option>
-                                                                <option value="pro">Pro</option>
+                                                                <?php foreach ($all_pac as $item) {
+                                                                    if ($item->package_id == $m->member_membership)
+                                                                        echo "<option value='$item->package_id' selected='selected'>$item->package_name </option>";
+                                                                    else
+                                                                        echo "<option value='$item->package_id' >$item->package_name </option>";
+                                                                } ?>
                                                             </select>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="Password">Password:</label>
-                                                            <input type="password" class="form-control" name="member_password" id="member_password" value="<?= $m->member_password ?>"  placeholder="Password">
+                                                            <input type="password" class="form-control" name="member_password" id="member_password" value="<?= $m->member_password ?>" placeholder="Password">
                                                         </div>
 
                                                     </div>
@@ -185,21 +216,20 @@ if ($_SESSION["user"]["user_role"] == 2) {
                                                         <div class="form-group">
                                                             <label for="trainer">Personal Trainer:</label>
                                                             <select class="form-control" id="trainer" name="member_ptrainer">
-                                                            <option value="">Select personal trainer</option>
-                                                            <?php foreach ($all as $item) {
-                                                    if ($item->trainer_id == $t->trainer_fname)
-                                                        echo "<option value='$item->trainer_id' selected='selected'>$item->trainer_fname </option>";
-                                                    else
-                                                        echo "<option value='$item->trainer_id' >$item->trainer_fname </option>";
-                                                } ?>
-                                                               
-                                                                <
-                                                            </select>
+                                                                <option value="">Select personal trainer</option>
+                                                                <?php foreach ($all as $item) {
+                                                                    if ($item->trainer_id == $m->member_ptrainer)
+                                                                        echo "<option value='$item->trainer_id' selected='selected'>$item->trainer_fname </option>";
+                                                                    else
+                                                                        echo "<option value='$item->trainer_id' >$item->trainer_fname </option>";
+                                                                } ?>
+
+                                                                < </select>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="email">Email:</label>
-                                                            <input type="email" class="form-control" id="email" name="member_email" value="<?= $m->member_email ?>" placeholder="Enter your email">
+                                                            <input type="email" class="form-control" id="email" name="member_email" value="<?= $m->member_email ?>" placeholder="Enter your email" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="phone">Phone Number:</label>
@@ -250,12 +280,34 @@ if (isset($_GET['s'])) {
         text: "Member Successfully Added",
         icon: "success",
         button: "Ok",
+    }).then(function() {
+        window.location.href = "manage_member.php";
       });
+    
 
     
     </script>';
 }
 
+
+if (isset($_GET['e'])) {
+
+
+    echo '<script>
+    
+  
+  swal({
+      title: "Success!",
+      text: "Member Successfully Edited",
+      icon: "success",
+      button: "Ok",
+    }).then(function() {
+      window.location.href = "manage_member.php";
+    });
+  
+    
+    </script>';
+  }
 
 
 ?>
@@ -279,17 +331,8 @@ if (isset($_GET['s'])) {
         m_age.value = age;
     }
 
-
-
-
-    // Call the function to calculate and display the age initially
     calculateAge();
 
 
-    // --
-
-    // function test(){
-    //     alert("Are You Sure You Want To Delete This Trainer")
-    // }
-    // test()
+ 
 </script>

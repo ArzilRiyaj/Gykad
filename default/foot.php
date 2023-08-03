@@ -34,6 +34,10 @@
 
    <!-- ---- -->
 
+   <script src="..\..\files\assets\pages\chart\c3\c3-custom-chart.js"></script>
+  
+
+
 
 
 
@@ -67,7 +71,9 @@
 
    <!-- <script type="text/javascript" src="..\..\files\assets\js\script.js"></script> -->
 
-
+ <!-- c3 chart js -->
+ <script src="..\..\files\bower_components\d3\js\d3.min.js"></script>
+    <script src="..\..\files\bower_components\c3\js\c3.js"></script>
 
 
 

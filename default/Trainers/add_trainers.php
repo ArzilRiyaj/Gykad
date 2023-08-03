@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once "trainer.php";
 include_once "../Login/login.php";
 
@@ -13,12 +13,13 @@ $lg_member = new login();
 if (isset($_POST["trainer_fname"])) {
 
 
-    $t->trainer_fname = $_POST["trainer_fname"];;
-    $t->trainer_sname = $_POST["trainer_sname"];;
-    $t->trainer_nic = $_POST["trainer_nic"];;
-    $t->trainer_email = $_POST["trainer_email"];;
-    $t->trainer_phone_number = $_POST["trainer_phone_number"];;
-    $t->trainer_address = $_POST["trainer_address"];;
+    $t->trainer_fname = $_POST["trainer_fname"];
+    $t->trainer_sname = $_POST["trainer_sname"];
+    $t->trainer_nic = $_POST["trainer_nic"];
+    $t->trainer_email = $_POST["trainer_email"];
+    $t->trainer_phone_number = $_POST["trainer_phone_number"];
+    $t->trainer_address = $_POST["trainer_address"];
+    $t->trainer_reg_no = $t->trainer_reg_no();
 
    
     $lg_member->user_name = $_POST["trainer_fname"];
@@ -29,12 +30,15 @@ if (isset($_POST["trainer_fname"])) {
     
     if(isset($_POST["t_id"])){
         $t->update_trainer($_POST["t_id"]);
-        // header("Location:manage_trainers.php?e=yes"); 
+        header("Location:manage_trainers.php?e=yes"); 
     }
     else{
     $result =  $t->insert_trainer(); 
     $lg_member->insert_login($result);
-    //  header("Location:add_trainers.php?s=yes");
+
+    // echo $result;
+
+     header("Location:manage_trainers.php?s=yes");
     }
 }
 
@@ -46,11 +50,15 @@ if (isset($_GET["t_id"])) {
 
 
 
-session_start();
+
 if($_SESSION["user"]["user_role"]==2){
 
 
     include_once "../head.php";
+}
+elseif($_SESSION["user"]["user_role"]==3){
+
+    include_once "../Trainers/trainer_head.php";
 }
 else{
     header("Location:../login/logout.php");

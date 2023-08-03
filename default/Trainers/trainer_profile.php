@@ -39,12 +39,7 @@ $A = $t->get_trainer_by_id($_GET['t_id'])
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="page-header-breadcrumb">
-                                        <ul class="breadcrumb-title">
-                                            <li class="breadcrumb-item">
-                                                <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
-                                            </li>
-                                            <li class="breadcrumb-item"><a href="#!">Widget</a> </li>
-                                        </ul>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -69,12 +64,13 @@ $A = $t->get_trainer_by_id($_GET['t_id'])
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="card-body">
-                                                        <img src="" class="img-fluid" alt="Trainer Photo">
+                                                        <img src="../Trainers/trainer_images/<?= $t->trainer_id ?>-0.jpg" class="img-fluid" alt="Trainer Photo">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="card-body">
                                                         <p class="card-text"><strong>NIC No:</strong> <?= $t->trainer_nic ?> </p>
+                                                        <p class="card-text"><strong>Email:</strong> <?= $t->trainer_email ?> </p>
 
 
                                                     </div>
@@ -82,7 +78,6 @@ $A = $t->get_trainer_by_id($_GET['t_id'])
                                                 <div class="col-md-4">
                                                     <div class="card-body">
                                                         <p class="card-text"><strong>Phone No:</strong> <?= $t->trainer_phone_number ?> </p>
-                                                        <p class="card-text"><strong>Email:</strong> <?= $t->trainer_email ?> </p>
                                                         <p class="card-text"><strong>Address:</strong> <?= $t->trainer_address ?> </p>
                                                     </div>
                                                 </div>

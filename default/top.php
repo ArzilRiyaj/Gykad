@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\additional_css.css">
 <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\jquery.mCustomScrollbar.css">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
  <!-- Select 2 css -->
@@ -45,3 +46,5 @@
 <!-- Style.css -->
 <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\style.css">
 <link rel="stylesheet" type="text/css" href="..\..\files\assets\css\jquery.mCustomScrollbar.css">
+ <!-- C3 chart -->
+ <link rel="stylesheet" href="..\..\files\bower_components\c3\css\c3.css" type="text/css" media="all">
